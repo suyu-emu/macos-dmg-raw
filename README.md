@@ -1,6 +1,6 @@
 <!--
 SPDX-FileCopyrightText: 2024 suyu emulator project
-SPDX-License-Identifier: GPL v3
+SPDX-License-Identifier: AGPL v3
 -->
 
 # MacOS Release Guide
@@ -27,7 +27,7 @@ mkdir build && cd build
 ```
 
 ```
-export Qt5_DIR="/opt/homebrew/opt/qt@5/lib/cmake"
+export Qt5_DIR="/opt/homebrew/opt/qt/lib/cmake"
 export LIBVULKAN_PATH=/opt/homebrew/lib/libvulkan.dylib
 export LLVM_DIR=$(brew --prefix)/opt/llvm@17
 export FFMPEG_DIR=$(brew --prefix)/opt/ffmpeg
@@ -36,7 +36,7 @@ export FFMPEG_DIR=$(brew --prefix)/opt/ffmpeg
 Make sure that you leave `CMAKE_BUILD_TYPE` on `Release` and the minimum macOS should be `macOS 11.0` you can't go lower than that (at least on apple silicon macs).
 
 ```
-cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DSUYU_USE_BUNDLED_VCPKG=OFF -DSUYU_TESTS=OFF -DENABLE_WEB_SERVICE=OFF -DENABLE_LIBUSB=OFF -DSDL_ARMNEON=ON -DENABLE_QT6=OFF -DENABLE_QT_TRANSLATION=ON -DSUYU_USE_EXTERNAL_VULKAN_HEADERS=OFF -DCLANG_FORMAT=ON -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0
+qt-cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DSUYU_USE_BUNDLED_VCPKG=OFF -DSUYU_TESTS=OFF -DENABLE_WEB_SERVICE=OFF -DENABLE_LIBUSB=OFF -DSDL_ARMNEON=ON -DENABLE_QT6=ON -DENABLE_QT_TRANSLATION=ON -DSUYU_USE_EXTERNAL_VULKAN_HEADERS=OFF -DCLANG_FORMAT=ON -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0
 ```
 
 ```
@@ -106,6 +106,6 @@ Inside that you need to drag and drop the image into this place:
 
 ### I have a problem
 
-If you have any problems or you want to update this guide, please contact me(AMA25) first in discord.
+If you have any problems or you want to update this guide, ~~please contact me(AMA25) first in discord.~~
 
 have a good day.
