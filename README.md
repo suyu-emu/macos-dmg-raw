@@ -25,18 +25,19 @@ git submodule update --init --recursive
 ```
 mkdir build && cd build
 ```
+For now we are using qt5
 
 ```
-export Qt5_DIR="/opt/homebrew/opt/qt/lib/cmake"
+export Qt5_DIR="/opt/homebrew/opt/qt@5/lib/cmake"
 export LIBVULKAN_PATH=/opt/homebrew/lib/libvulkan.dylib
 export LLVM_DIR=$(brew --prefix)/opt/llvm@17
 export FFMPEG_DIR=$(brew --prefix)/opt/ffmpeg
 ```
 
-Make sure that you leave `CMAKE_BUILD_TYPE` on `Release` and the minimum macOS should be `macOS 11.0` you can't go lower than that (at least on apple silicon macs).
+Make sure that you leave `CMAKE_BUILD_TYPE` on `Release` and the minimum macOS should be `macOS 11.0` you can't go lower than that (at least on apple silicon macs). Do not turn on Qt6 for now.
 
 ```
-qt-cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DSUYU_USE_BUNDLED_VCPKG=OFF -DSUYU_TESTS=OFF -DENABLE_WEB_SERVICE=OFF -DENABLE_LIBUSB=OFF -DSDL_ARMNEON=ON -DENABLE_QT6=ON -DENABLE_QT_TRANSLATION=ON -DSUYU_USE_EXTERNAL_VULKAN_HEADERS=OFF -DCLANG_FORMAT=ON -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0
+cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release -DSUYU_USE_BUNDLED_VCPKG=OFF -DSUYU_TESTS=OFF -DENABLE_WEB_SERVICE=OFF -DENABLE_LIBUSB=OFF -DSDL_ARMNEON=ON -DENABLE_QT6=OFF -DENABLE_QT_TRANSLATION=ON -DSUYU_USE_EXTERNAL_VULKAN_HEADERS=OFF -DCLANG_FORMAT=ON -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0
 ```
 
 ```
@@ -71,14 +72,11 @@ fourth, you have to go to `disk utility` and unmount the disk
 
 fifth is the sensitive part. you have to go to `images->convert` in `disk utility`:
 
-
 ![fifth step](assets/image-2.png)
-
 
 you have to convert the image to `read-only`:
 
 ![read-only](assets/image-3.png)
-
 
 change the name to whatever you want or you can name it the way it is inside the picture.
 click on convert.
@@ -86,7 +84,6 @@ click on convert.
 sixth, you don't have to skip this part. You have to convert the new image (the read-only one) to `compressed` and name it `suyu-macOS-<CPU_ARCHITECTURE>.dmg`:
 
 ![sixth step](assets/image-4.png)
-
 
 check the size of the final dmg file and see if you can copy anything into it. It should be read-only and compressed.
 
@@ -98,11 +95,9 @@ In the `suyu-macOS-arm64raw.dmg`, right click (control click) on the background.
 
 ![show view options](assets/image-5.png)
 
-
 Inside that you need to drag and drop the image into this place:
 
 ![changing background](assets/image-6.png)
-
 
 ### I have a problem
 
